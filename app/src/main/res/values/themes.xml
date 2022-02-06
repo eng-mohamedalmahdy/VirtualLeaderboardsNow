@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.VirtualLeaderboardsNow" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/electric_violet</item>
+        <item name="colorPrimaryVariant">@color/electric_violet</item>
+        <item name="colorOnPrimary">@color/gun_powder</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/froly</item>
+        <item name="colorSecondaryVariant">@color/froly</item>
+        <item name="colorOnSecondary">@color/gun_powder</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/gun_powder</item>
+
+    </style>
+
+    <style name="DialogTheme" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:background">@color/froly</item>
+        <item name="shapeAppearanceOverlay">@style/DialogCorners</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="DialogCorners">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+</resources>

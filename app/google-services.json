@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "411889674005",
+    "project_id": "virtual-leaderboards-now",
+    "storage_bucket": "virtual-leaderboards-now.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411889674005:android:e08d61d7c30dde4032ab1c",
+        "android_client_info": {
+          "package_name": "com.example.virtualleaderboardsnow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411889674005-e4mldmus29d1e7ubt9spm3k94h53rov8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvYWnnkRdFRlCcawUNKuZ9SO_VJq_s1Ck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411889674005-e4mldmus29d1e7ubt9spm3k94h53rov8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
