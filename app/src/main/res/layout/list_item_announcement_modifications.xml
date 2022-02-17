@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/gun_powder"
+            app:cardCornerRadius="16dp"
+            app:cardUseCompatPadding="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_2sdp"
+                android:padding="@dimen/_4sdp">
+
+
+                <TextView
+                    android:layout_margin="@dimen/_8sdp"
+                    android:id="@+id/hero_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adam Mohamed"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <LinearLayout
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/drawable_rounded_accent_12dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/dec"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:background="@null"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_remove_circle_24"
+                        android:textSize="@dimen/_24ssp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null"
+                        app:cornerRadius="@dimen/_100sdp" />
+
+                    <EditText
+                        android:id="@+id/score"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:backgroundTint="@color/white"
+                        android:inputType="numberSigned"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white" />
+
+
+                    <ImageButton
+                        android:id="@+id/inc"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_4sdp"
+                        android:background="@null"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_add_circle_24"
+                        android:textSize="@dimen/_24ssp"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null"
+                        app:cornerRadius="@dimen/_100sdp" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

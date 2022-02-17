@@ -16,4 +16,6 @@
     <string name="add_announcement">Add announcement</string>
     <string name="heroes">Heroes</string>
     <string name="announcementes">Announcementes</string>
+    <string name="announce">Announce</string>
+    <string name="announcement_details">Announcement details</string>
 </resources>

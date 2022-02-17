@@ -5,6 +5,7 @@ import com.example.virtualleaderboardsnow.application.model.FireStoreHero
 import com.example.virtualleaderboardsnow.application.model.FireStoreLeaderboard
 import com.example.virtualleaderboardsnow.presentation.home.model.HomePageLeaderboard
 import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.leaderboardannouncements.Announcement
+import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.leaderboardannouncements.createannouncementdialog.AnnouncementConfig
 import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.leaderboardheroes.Hero
 
 fun toHomePageLeaderboard(leaderboard: FireStoreLeaderboard) =
@@ -18,7 +19,10 @@ fun toHomePageLeaderboard(leaderboard: FireStoreLeaderboard) =
     )
 
 fun toLeaderboardDetailsHero(hero: FireStoreHero) =
-    Hero(hero.id?:"",hero.name ?: "", hero.score)
+    Hero(hero.id ?: "", hero.name ?: "", hero.score)
 
 fun toLeaderboardDetailsAnnouncement(announcement: FireStoreAnnouncement) =
     Announcement(announcement.title ?: "", announcement.contributors)
+
+fun toAnnouncementConfig(hero: FireStoreHero) =
+    AnnouncementConfig(heroId = hero.id.orEmpty(), heroName = hero.name.orEmpty(), 0)

@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.virtualleaderboardsnow.R
 import com.example.virtualleaderboardsnow.databinding.ListItemHeroesBinding
 
-class LeaderboardHeroesAdapter(private val list: List<Hero>) :
+class LeaderboardHeroesAdapter(private var list: List<Hero>) :
     RecyclerView.Adapter<LeaderboardHeroesAdapter.ViewHolder>() {
 
+    init {
+        list = list.sortedByDescending { it.score }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         DataBindingUtil.bind<ListItemHeroesBinding>(

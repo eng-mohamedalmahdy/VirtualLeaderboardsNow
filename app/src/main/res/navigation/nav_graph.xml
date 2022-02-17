@@ -28,5 +28,17 @@
         <argument
             android:name="leaderboardId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_leaderboardDetailsFragment_to_createAnnouncementDialog"
+            app:destination="@id/createAnnouncementDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/createAnnouncementDialog"
+        android:name="com.example.virtualleaderboardsnow.presentation.leaderboarddetails.leaderboardannouncements.createannouncementdialog.CreateAnnouncementDialog"
+        android:label="CreateAnnouncementDialog"
+        tools:layout="@layout/dialog_create_announcement">
+        <argument
+            android:name="boardId"
+            app:argType="string" />
+    </dialog>
 </navigation>

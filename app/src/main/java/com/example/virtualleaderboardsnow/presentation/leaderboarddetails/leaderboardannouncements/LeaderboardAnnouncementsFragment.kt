@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.virtualleaderboardsnow.R
 import com.example.virtualleaderboardsnow.databinding.FragmentLeaderboardAnnouncementsBinding
 import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.FragmentsArgs
 import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.FragmentsArgs.IS_BOARD_ADMIN
+import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.LeaderboardDetailsFragmentDirections
 import kotlinx.coroutines.flow.map
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,6 +41,13 @@ class LeaderboardAnnouncementsFragment : Fragment() {
                 viewModel.getLeaderBoardAnnouncements(boardId)
                     .map(::LeaderboardAnnouncementsAdapter)
                     .collect(binding.announcementsList::setAdapter)
+            }
+            binding.addAnnouncement.setOnClickListener {
+                findNavController().navigate(
+                    LeaderboardDetailsFragmentDirections.actionLeaderboardDetailsFragmentToCreateAnnouncementDialog(
+                        boardId
+                    )
+                )
             }
         }
     }

@@ -82,6 +82,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            android:background="@drawable/gradient_primary_secondary"
             android:id="@+id/log_in"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -93,7 +94,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
-            app:backgroundTint="?colorPrimary"
+            app:backgroundTint="@null"
             app:cornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="@id/page_end_guideline"
             app:layout_constraintStart_toStartOf="@id/page_start_guideline"

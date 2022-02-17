@@ -10,4 +10,10 @@ data class FireStoreHero(
 
     @PropertyName("score")
     var score: Int = 0
-)
+) {
+    constructor(map: Map<String, Any>) : this(
+        map["id"] as String,
+        map["name"] as String,
+        (map["score"] as Long).toInt()
+    )
+}

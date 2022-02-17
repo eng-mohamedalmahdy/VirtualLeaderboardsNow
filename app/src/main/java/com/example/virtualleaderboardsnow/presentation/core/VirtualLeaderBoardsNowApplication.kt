@@ -6,6 +6,7 @@ import com.example.virtualleaderboardsnow.domain.HomePageRepository
 import com.example.virtualleaderboardsnow.domain.LeaderboardDetailsRepository
 import com.example.virtualleaderboardsnow.presentation.home.view.HomeViewModel
 import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.leaderboardannouncements.LeaderboardAnnouncementsViewModel
+import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.leaderboardannouncements.createannouncementdialog.CreateAnnouncementViewModel
 import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.leaderboardheroes.LeaderboardHeroesViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -35,5 +36,6 @@ val appModule = module {
     single { LeaderboardDetailsRepository(get()) }
     viewModel { LeaderboardAnnouncementsViewModel(get()) }
     viewModel { LeaderboardHeroesViewModel(get()) }
+    viewModel { params -> CreateAnnouncementViewModel(get(), params.get()) }
 
 }
