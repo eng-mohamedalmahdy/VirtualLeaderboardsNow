@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.virtualleaderboardsnow.R
 import com.example.virtualleaderboardsnow.databinding.ListItemLeaderboardBinding
 import com.example.virtualleaderboardsnow.presentation.home.model.HomePageLeaderboard
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class HomeLeaderboardsAdapter(
     private val leaderboards: List<HomePageLeaderboard>,
@@ -16,7 +18,7 @@ class HomeLeaderboardsAdapter(
 ) :
     RecyclerView.Adapter<HomeLeaderboardsAdapter.ViewHolder>() {
 
-    val ADMIN_ID = "test"
+    val ADMIN_ID = Firebase.auth.currentUser?.uid ?: ""
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         DataBindingUtil.bind<ListItemLeaderboardBinding>(
             LayoutInflater.from(parent.context)

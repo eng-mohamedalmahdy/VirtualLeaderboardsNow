@@ -3,6 +3,8 @@ package com.example.virtualleaderboardsnow.domain
 import android.content.Context
 import android.content.DialogInterface
 import android.text.InputType
+import android.text.TextUtils
+import android.util.Patterns
 import android.util.TypedValue
 import android.widget.EditText
 import androidx.annotation.AttrRes
@@ -73,3 +75,6 @@ val SearchView.textFlow: Flow<String>
             cancel()
         }
     }
+
+fun String.isValidEmail() =
+    isEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()

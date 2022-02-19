@@ -13,9 +13,8 @@ class HomePageRepository(private val source: FireStoreAPI) {
         source.getUserLeaderboardsList()
             .map { it.map(::toHomePageLeaderboard) }
 
-    fun searchLeaderboard(name: String): StateFlow<List<HomePageLeaderboard>> {
-        return MutableStateFlow(listOf())
-    }
+    fun searchLeaderboard(name: String): Flow<List<HomePageLeaderboard>> =
+        source.searchLeaderboard(name).map { it.map(::toHomePageLeaderboard) }
 
     fun addLeaderboard(boardName: String) = source.addLeaderboard(boardName)
 }

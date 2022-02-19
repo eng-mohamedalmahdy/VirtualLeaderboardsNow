@@ -18,4 +18,9 @@
     <string name="announcementes">Announcementes</string>
     <string name="announce">Announce</string>
     <string name="announcement_details">Announcement details</string>
+    <string name="this_field_is_required">This field is required</string>
+    <string name="invalid_email_formation">Invalid email formation</string>
+    <string name="invalid_inputs">Invalid inputs</string>
+    <string name="email_created_successfully">Email created successfully</string>
+    <string name="invalid_credrentials">Invalid Credrentials</string>
 </resources>

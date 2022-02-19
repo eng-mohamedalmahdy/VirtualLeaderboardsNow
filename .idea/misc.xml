@@ -17,13 +17,14 @@
         <entry key="app/src/main/res/drawable/ic_baseline_leaderboard_24.xml" value="0.19635416666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1828125" />
         <entry key="app/src/main/res/layout/dialog_create_announcement.xml" value="0.16111111111111112" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.17037037037037037" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_leaderboard_announcements.xml" value="0.15555555555555556" />
         <entry key="app/src/main/res/layout/fragment_leaderboard_details.xml" value="0.165625" />
         <entry key="app/src/main/res/layout/fragment_leaderboard_heroes.xml" value="0.14629629629629629" />
         <entry key="app/src/main/res/layout/fragment_leaderboard_heros.xml" value="0.165625" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.14074074074074075" />
-        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.15555555555555556" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.1796875" />
         <entry key="app/src/main/res/layout/list_item_announcement.xml" value="0.22" />
         <entry key="app/src/main/res/layout/list_item_announcement_modifications.xml" value="0.22" />
         <entry key="app/src/main/res/layout/list_item_heroe.xml" value="0.18020833333333333" />

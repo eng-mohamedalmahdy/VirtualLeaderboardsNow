@@ -6,7 +6,9 @@ import com.example.virtualleaderboardsnow.application.model.FireStoreHero
 import com.example.virtualleaderboardsnow.application.model.FireStoreLeaderboard
 import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.leaderboardannouncements.createannouncementdialog.AnnouncementConfig
 import com.example.virtualleaderboardsnow.presentation.leaderboarddetails.leaderboardheroes.Hero
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.*
+import com.google.firebase.ktx.Firebase
 import com.squareup.okhttp.internal.DiskLruCache
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.awaitClose
@@ -23,7 +25,10 @@ class FireStoreAPI {
         val fireStoreDatabase = FirebaseFirestore.getInstance()
         return callbackFlow {
             fireStoreDatabase.collection(FireStoreAPIPathsAndKeys.LEADERBOARDS)
-//                .whereArrayContains(FireStoreAPIPathsAndKeys.ADMIN_ID, " ")
+//                .whereArrayContains(
+//                    FireStoreAPIPathsAndKeys.ADMIN_ID,
+//                    Firebase.auth.currentUser?.uid ?: ""
+//                )
                 .addSnapshotListener { snapshot, e ->
                     if (e != null) {
                         Log.w(TAG, "Listen failed.", e)
@@ -114,7 +119,11 @@ class FireStoreAPI {
     fun addLeaderboard(boardName: String) {
         val fireStoreDatabase = FirebaseFirestore.getInstance()
         val key = fireStoreDatabase.collection(FireStoreAPIPathsAndKeys.LEADERBOARDS).document().id
-        val leaderboard = FireStoreLeaderboard(name = boardName, id = key)
+        val leaderboard = FireStoreLeaderboard(
+            name = boardName,
+            id = key,
+            adminId = listOf(Firebase.auth.currentUser?.uid)
+        )
         fireStoreDatabase.collection(FireStoreAPIPathsAndKeys.LEADERBOARDS).document(key)
             .set(leaderboard)
     }
@@ -125,7 +134,12 @@ class FireStoreAPI {
             fireStoreDatabase.collection(FireStoreAPIPathsAndKeys.LEADERBOARDS).document(boardId)
         board.collection("heroes").get().addOnSuccessListener { docs ->
             Log.d(TAG, "addHero: ${docs.toHashSet()}")
-            val hero = Hero(name = heroName, id = "${docs.size() + 1}", score = 0)
+            val hero = Hero(
+                name = heroName,
+                id = fireStoreDatabase.collection(FireStoreAPIPathsAndKeys.LEADERBOARDS)
+                    .document().id,
+                score = 0
+            )
             board.update("heroes", FieldValue.arrayUnion(hero))
         }
 
@@ -181,10 +195,42 @@ class FireStoreAPI {
         }
     }
 
+    fun searchLeaderboard(name: String): Flow<List<FireStoreLeaderboard>> {
+        val fireStoreDatabase = FirebaseFirestore.getInstance()
+        return callbackFlow {
+            fireStoreDatabase.collection(FireStoreAPIPathsAndKeys.LEADERBOARDS)
+                .orderBy(
+                    FireStoreAPIPathsAndKeys.BOARD_NAME
+                ).startAt(name)
+                .endAt("$name~")
+                .addSnapshotListener { snapshot, e ->
+                    if (e != null) {
+                        Log.w(TAG, "Listen failed.", e)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            this@callbackFlow.awaitClose {
+                                cancel()
+                            }
+                        }
+                        return@addSnapshotListener
+
+                    } else {
+                        val res =
+                            snapshot?.documents?.mapNotNull { it.toObject(FireStoreLeaderboard::class.java) }
+                                ?: listOf()
+                        trySend(res)
+                    }
+                }
+            this@callbackFlow.awaitClose {
+                cancel()
+            }
+        }
+    }
+
 
     private object FireStoreAPIPathsAndKeys {
         const val LEADERBOARDS = "leaderboards"
         const val ADMIN_ID = "adminId"
+        const val BOARD_NAME = "name"
     }
 
 }

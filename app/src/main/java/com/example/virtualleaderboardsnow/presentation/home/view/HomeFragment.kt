@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.virtualleaderboardsnow.databinding.FragmentHomeBinding
 import com.example.virtualleaderboardsnow.domain.showDialog
 import com.example.virtualleaderboardsnow.domain.textFlow
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collectLatest
@@ -49,6 +52,10 @@ class HomeFragment : Fragment() {
             }
             binding.addLeaderboard.setOnClickListener {
                 requireContext().showDialog("Add Leaderboard", viewModel::addLeaderboard)
+            }
+            binding.exit.setOnClickListener {
+                Firebase.auth.signOut()
+                findNavController().popBackStack()
             }
         }
 

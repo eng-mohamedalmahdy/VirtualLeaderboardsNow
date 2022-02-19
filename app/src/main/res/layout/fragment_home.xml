@@ -14,14 +14,25 @@
         android:padding="@dimen/_8sdp"
         tools:context=".presentation.home.view.HomeFragment">
 
+        <ImageButton
+            android:id="@+id/exit"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/drawable_rounded_accent_30dp"
+            android:backgroundTint="?colorPrimary"
+            android:src="@drawable/ic_baseline_exit_to_app_24"
+            app:layout_constraintBottom_toBottomOf="@id/leaderboard_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/leaderboard_search"
+            app:tint="@color/white" />
+
         <androidx.appcompat.widget.SearchView
             android:id="@+id/leaderboard_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/_8sdp"
             android:background="@drawable/gradient_search_view"
-            android:maxWidth="@dimen/_500sdp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/exit"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@id/leaderboards_list"
             app:layout_constraintTop_toTopOf="parent" />
