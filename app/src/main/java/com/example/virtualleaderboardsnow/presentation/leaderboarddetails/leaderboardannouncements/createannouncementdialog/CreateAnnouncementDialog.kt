@@ -66,7 +66,7 @@ class CreateAnnouncementDialog : DialogFragment() {
                 if (configsAdapter != null && configsAdapter?.getChangedList()
                         ?.isNotEmpty() == true
                 ) viewModel.submitUpdates(
-                    binding.nameEditText.text.toString() ?: "",
+                    binding.nameEditText.text.toString(),
                     configsAdapter?.getChangedList()!!
                 )
                 dismiss()

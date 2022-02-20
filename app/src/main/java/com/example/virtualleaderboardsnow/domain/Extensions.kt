@@ -78,3 +78,5 @@ val SearchView.textFlow: Flow<String>
 
 fun String.isValidEmail() =
     isEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
+fun String.isNumber() = fold(true) { acc, c -> acc and (c.isDigit() || c == '.' || c == '-') }

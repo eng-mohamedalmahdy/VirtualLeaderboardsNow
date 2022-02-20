@@ -124,6 +124,7 @@ class FireStoreAPI {
             id = key,
             adminId = listOf(Firebase.auth.currentUser?.uid)
         )
+        Log.d(TAG, "addLeaderboard: $leaderboard")
         fireStoreDatabase.collection(FireStoreAPIPathsAndKeys.LEADERBOARDS).document(key)
             .set(leaderboard)
     }

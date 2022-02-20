@@ -11,8 +11,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.virtualleaderboardsnow.R
 import com.example.virtualleaderboardsnow.databinding.ListItemAnnouncementModificationsBinding
+import com.example.virtualleaderboardsnow.domain.isNumber
 
 private const val TAG = "AnnouncementConfigAdapt"
+
 class AnnouncementConfigAdapter(private val announcementConfigs: List<AnnouncementConfig>) :
     RecyclerView.Adapter<AnnouncementConfigAdapter.ViewHolder>() {
 
@@ -24,7 +26,7 @@ class AnnouncementConfigAdapter(private val announcementConfigs: List<Announceme
         )?.let { ViewHolder(it) }!!
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(announcementConfigs[position],position)
+        holder.bind(announcementConfigs[position], position)
 
     override fun getItemCount() = announcementConfigs.size
 
@@ -33,7 +35,7 @@ class AnnouncementConfigAdapter(private val announcementConfigs: List<Announceme
     inner class ViewHolder(private val binding: ListItemAnnouncementModificationsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(announcementConfig: AnnouncementConfig,position: Int) {
+        fun bind(announcementConfig: AnnouncementConfig, position: Int) {
             with(binding) {
                 heroName.text = announcementConfig.heroName
                 inc.setOnClickListener { score += 1; announcementConfigs[position].heroScore += 1 }
@@ -44,8 +46,11 @@ class AnnouncementConfigAdapter(private val announcementConfigs: List<Announceme
                     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
                     override fun afterTextChanged(p0: Editable?) {
-                        if (p0.toString().isDigitsOnly() && p0.toString().isNotEmpty())
+                        if (p0.toString() == "-") announcementConfigs[position].heroScore = -0
+                        else if (p0.toString().isNumber() && p0.toString().isNotEmpty()) {
                             announcementConfigs[position].heroScore = p0.toString().toInt()
+                            Log.d(TAG, "afterTextChanged: ${announcementConfigs[position]}")
+                        }
                     }
                 })
             }
